@@ -5,6 +5,7 @@ Instagram clone backend.
 ## Tech stack
 
 - Node.js
+- Typescript
 - Prisma
 - Apollo GraphQL
 
