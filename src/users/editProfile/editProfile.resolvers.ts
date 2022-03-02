@@ -1,12 +1,14 @@
 import * as bcrypt from "bcrypt";
+import { GraphQLUpload } from "graphql-upload";
 import { Resolvers } from "../../types";
 import { protectedResolver } from "../users.utils";
 
 const resolverFn = async (
   _,
-  { firstName, lastName, username, email, password: newPassword, bio },
+  { firstName, lastName, username, email, password: newPassword, bio, avatar },
   { loggedInUser, client }
 ) => {
+  console.log(avatar);
   let encryptedPassword = null;
   if (newPassword) {
     encryptedPassword = await bcrypt.hash(newPassword, 10);
@@ -43,4 +45,4 @@ const resolvers: Resolvers = {
   },
 };
 
-export default resolvers;
+export default { resolvers, Upload: GraphQLUpload };
