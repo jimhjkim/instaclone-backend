@@ -1,13 +1,14 @@
+import { User } from "@prisma/client";
 import * as jwt from "jsonwebtoken";
 import client from "../client";
 import { Context, Resolver } from "../types";
 
-export const getUser = async (token) => {
+export const getUser = async (token: string | string[] | null): Promise<User | null> => {
   try {
     if (!token) {
       return null;
     }
-    const verifiedToken:any = await jwt.verify(token, process.env.SECRET_KEY);
+    const verifiedToken: any = await jwt.verify(token as string, process.env.SECRET_KEY);
     if ("id" in verifiedToken) {
       const user = await client.user.findUnique({ where: { id: verifiedToken["id"] } });
       if (user) {

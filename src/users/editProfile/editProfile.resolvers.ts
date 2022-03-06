@@ -1,14 +1,19 @@
+import { createWriteStream } from "fs";
 import * as bcrypt from "bcrypt";
 import { GraphQLUpload } from "graphql-upload";
 import { Resolvers } from "../../types";
 import { protectedResolver } from "../users.utils";
 
 const resolverFn = async (
-  _,
+  _: any,
   { firstName, lastName, username, email, password: newPassword, bio, avatar },
   { loggedInUser, client }
 ) => {
-  console.log(avatar);
+  const { filename, createReadStream } = await avatar.file;
+  const readStream = createReadStream();
+  const writeStream = createWriteStream(process.cwd() + "/uploads/" + filename);
+  readStream.pipe(writeStream);
+
   let encryptedPassword = null;
   if (newPassword) {
     encryptedPassword = await bcrypt.hash(newPassword, 10);
@@ -37,7 +42,6 @@ const resolverFn = async (
     };
   }
 };
-
 
 const resolvers: Resolvers = {
   Mutation: {
