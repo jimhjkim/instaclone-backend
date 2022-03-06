@@ -23,7 +23,8 @@ const startApolloServer = async (typeDefs, resolvers): Promise<void> => {
   });
   await server.start();
   app.use(logger("tiny"));
-  // app.use(graphqlUploadExpress());
+  app.use("/static", express.static("uploads"));
+  app.use(graphqlUploadExpress());
   server.applyMiddleware({ app });
   await new Promise<void>((resolve) => app.listen({ port: PORT }, resolve));
   console.log(
