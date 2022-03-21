@@ -17,8 +17,8 @@ Instagram clone backend.
 - [x] See Profile
 - [x] Login
 - [x] Edit Profile
-- [ ] Follow User
-- [ ] Unfollow User
+- [x] Follow User
+- [x] Unfollow User
 - [x] Change Avatar (Image Upload)
 - [ ] See Followers w/ Pagination
 - [ ] See Following w/ Pagination
