@@ -20,8 +20,8 @@ Instagram clone backend.
 - [x] Follow User
 - [x] Unfollow User
 - [x] Change Avatar (Image Upload)
-- [ ] See Followers w/ Pagination
-- [ ] See Following w/ Pagination
+- [x] See Followers w/ Pagination
+- [x] See Following w/ Pagination
 - [ ] Computed Fields
 - [ ] Search Users
 
