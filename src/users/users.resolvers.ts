@@ -20,5 +20,6 @@ export default {
           },
         },
       }),
+    isMe: ({ id }, args, { loggedInUser }) => id === loggedInUser?.id,
   },
 };
