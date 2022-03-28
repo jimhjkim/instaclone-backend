@@ -22,7 +22,7 @@ Instagram clone backend.
 - [x] Change Avatar (Image Upload)
 - [x] See Followers w/ Pagination
 - [x] See Following w/ Pagination
-- [ ] Computed Fields
+- [x] Computed Fields
 - [ ] Search Users
 
 ### Photos:
