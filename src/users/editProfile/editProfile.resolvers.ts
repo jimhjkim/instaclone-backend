@@ -1,24 +1,24 @@
-import { createWriteStream } from "fs";
-import * as bcrypt from "bcrypt";
-import { GraphQLUpload } from "graphql-upload";
-import { Resolvers } from "../../types";
-import { protectedResolver } from "../users.utils";
+import { createWriteStream } from 'fs';
+import * as bcrypt from 'bcrypt';
+import { GraphQLUpload } from 'graphql-upload';
+import { Resolvers } from '../../types';
+import { protectedResolver } from '../users.utils';
 
 const resolverFn = async (
   _: any,
   { firstName, lastName, username, email, password: newPassword, bio, avatar },
-  { loggedInUser, client }
+  { loggedInUser, client },
 ) => {
   let avatarUrl = null;
   if (avatar) {
     const { filename, createReadStream } = await avatar.file;
-    const newFileame = `${loggedInUser.id}-${Date.now()}-${filename}`;
+    const newFilename = `${loggedInUser.id}-${Date.now()}-${filename}`;
     const readStream = createReadStream();
     const writeStream = createWriteStream(
-      process.cwd() + "/uploads/" + newFileame
+      process.cwd() + '/uploads/' + newFilename,
     );
     readStream.pipe(writeStream);
-    avatarUrl = `http://localhost:4000/static/${newFileame}`;
+    avatarUrl = `http://localhost:4000/static/${newFilename}`;
   }
 
   let encryptedPassword = null;
@@ -46,7 +46,7 @@ const resolverFn = async (
   } else {
     return {
       ok: false,
-      error: "Could not update profile",
+      error: 'Could not update profile',
     };
   }
 };
