@@ -8,8 +8,8 @@ export default {
       client.hashtag.findMany({ where: { photos: { some: { id } } } }),
   },
   Hashtag: {
-    photos: ({ id }, { page }, { client, isLoggedInUser }) => {
-      if (isLoggedInUser) {
+    photos: ({ id }, { page }, { client, loggedInUser }) => {
+      if (loggedInUser) {
         return client.hashtag
           .findUnique({
             where: {
