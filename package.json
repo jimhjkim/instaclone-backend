@@ -5,7 +5,9 @@
   "scripts": {
     "dev": "nodemon --exec ts-node src/server --ext ts,js --delay 2",
     "migrate": "npx prisma migrate dev",
-    "studio": "npx prisma studio"
+    "studio": "npx prisma studio",
+    "build": "npx tsc",
+    "start": "node dist/server"
   },
   "repository": {
     "type": "git",
@@ -33,9 +35,6 @@
     "morgan": "^1.10.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.17.5",
-    "@babel/node": "^7.16.8",
-    "@babel/preset-env": "^7.16.11",
     "@types/bcrypt": "^5.0.0",
     "@types/express": "^4.17.13",
     "@types/graphql-upload": "^8.0.11",
