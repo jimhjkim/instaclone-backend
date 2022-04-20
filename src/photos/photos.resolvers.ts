@@ -1,5 +1,3 @@
-import { protectedResolver } from '../users/users.utils';
-
 export default {
   Photo: {
     user: ({ userId }, _, { client }) =>
